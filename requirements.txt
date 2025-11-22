@@ -1,0 +1,35 @@
+# Python requirements for Petri Net project
+# Add your required packages below
+# Example:
+# tinyxml2 (for C++ only, not Python)
+
+# --- C++ dependencies ---
+# GLPK (GNU Linear Programming Kit)
+# CUDD (CU Decision Diagram Package)
+# These are system libraries, not Python packages.
+# Installation instructions:
+#
+# 1. Install GLPK (for Linux):
+#    sudo apt-get update
+#    sudo apt-get install libglpk-dev
+#
+# 2. Install CUDD (for Linux):
+#    sudo apt-get install automake autoconf m4 perl
+#    cd cudd
+#    ./configure --prefix=/usr/local
+#    make
+#    sudo make install
+#
+#    If cudd.h is not found, use:
+#    g++ ... -I./cudd/cudd -L/usr/local/lib -lcudd -lutil -lm -DUSE_CUDD ...
+#
+# 3. Compile C++ project:
+#    g++ -std=c++17 petri_net.cpp tinyxml2.cpp -lglpk -DUSE_GLPK -O2 -o petri_net
+#    g++ -std=c++17 petri_net.cpp tinyxml2.cpp -I/usr/local/include -L/usr/local/lib -lcudd -lutil -lm -DUSE_CUDD -O2 -o petri_net
+#    # Or with both:
+#    g++ -std=c++17 petri_net.cpp tinyxml2.cpp -I/usr/local/include -L/usr/local/lib -lcudd -lutil -lglpk -lm -DUSE_CUDD -DUSE_GLPK -O2 -o petri_net
+#
+# 4. Run:
+     ./petri_net hi.pnml --ilp-max 10,0,1,1  #run GLPK
+     
+#    ./petri_net example.pnml
